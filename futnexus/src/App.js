@@ -127,17 +127,21 @@ function App() {
       <Row>
         {productos.map((producto) => (
           <Col key={producto.id} md={4} className="mb-3">
-            <Card>
+            <Card className="shadow-sm p-3 mb-3 bg-white rounded" style={{ width: "24rem" }}>
               {producto.image && (
-                <Card.Img variant="top" src={`data:image/png;base64,${producto.image}`} />
+                <Card.Img
+                  variant="top"
+                  src={`data:image/png;base64,${producto.image}`}
+                  style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                />
               )}
-              <Card.Body>
-                <Card.Title>{producto.name}</Card.Title>
-                <Card.Text>
+              <Card.Body className="d-flex flex-column justify-content-between">
+                <Card.Title className="text-center text-primary">{producto.name}</Card.Title>
+                <Card.Text className="text-muted">
                   {producto.description} <br />
-                  <strong>Partidos jugados</strong> {producto.price}
+                  <strong>Partidos jugados:</strong> {producto.price}
                 </Card.Text>
-                <Button variant="primary" onClick={() => handleChat(producto)}>
+                <Button variant="primary" className="mt-2 w-100" onClick={() => handleChat(producto)}>
                   Preguntar al Chatbot
                 </Button>
               </Card.Body>
